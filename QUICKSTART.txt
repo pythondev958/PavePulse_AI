@@ -1,0 +1,42 @@
+PAVEPULSE AI | WINDOWS QUICKSTART
+=================================
+
+1) EXTRACT ZIP in D:\Personal\github_projects, then:
+
+cd D:\Personal\github_projects\PavePulse_AI
+py -3.13 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m unittest discover -s tests -v
+
+2) DOWNLOAD ROAD VIDEO (asphalt cracks or pothole clearly visible)
+
+https://www.pexels.com/video/motorbikes-navigating-a-pothole-in-urban-street-34218247/
+https://www.pexels.com/video/cracks-on-asphalt-road-built-for-crossing-the-desert-3058756/
+https://www.pexels.com/search/videos/potholes/
+
+Place video at input\road.mp4 (rename file if necessary).
+Video licensing/permission: check the creator's license before sharing.
+
+3) FIRST RUN: POTHOLE SPECIALIST WEIGHTS AUTO-DOWNLOAD
+
+python pavepulse.py --input input/road.mp4 --output outputs --device cpu --max-seconds 5 --show
+
+4) FULL VIDEO
+
+python pavepulse.py --input input/road.mp4 --output outputs --device cpu --show
+explorer .\outputs
+
+5) IF NO DEFECTS FOUND, VERIFY THE VIDEO ACTUALLY SHOWS DAMAGE.
+Try a slower higher-resolution test:
+
+python pavepulse.py --input input/road.mp4 --output outputs --device cpu --max-seconds 5 --imgsz 960 --conf 0.20
+
+DEFAULT POTHOLE MODEL: https://huggingface.co/Samdutse/pothole-yolov8
+OPTIONAL 4-CLASS MODEL: https://huggingface.co/dronefreak/rdd2022-yolov8s
+OPTIONAL 4-CLASS WEIGHTS DOWNLOAD: python download_model.py
+OPTIONAL 4-CLASS RUN: python pavepulse.py --input input/road.mp4 --weights models/best.pt
+
+IMPORTANT: This POC shows potential defects for review, not unique pothole counts,
+precise road location, measured physical severity, or guaranteed safety assessment.

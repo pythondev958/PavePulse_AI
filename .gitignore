@@ -1,0 +1,46 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.log
+.env
+.env.*
+!.env.example
+models/
+*.pt
+*.pth
+*.onnx
+*.engine
+input/*
+!input/.gitkeep
+outputs/*
+!outputs/.gitkeep
+.DS_Store
+Thumbs.db
+
+# Generated videos, model comparison experiments, and alternate output folders
+outputs*/
+pothole_test/
+runs/
+*.mp4
+*.avi
+*.mkv
+*.mov
+# Python environment
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+# Pretrained models
+models/
+*.pt
+# Videos
+*.mp4
+*.avi
+*.mov
+*.mkv
+# Generated outputs
+outputs*/
+pothole_test/
+runs/
